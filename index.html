@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chameleon</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="./manifest.json" />
+  </head>
+  <body>
+    <div class="game-container">
+      <h1>Chameleon</h1>
+
+      <!-- Player Setup -->
+      <div class="setup-container">
+        <label for="player-count-input">Number of Players: </label>
+        <input
+          type="number"
+          id="player-count-input"
+          min="3"
+          max="10"
+          value="4"
+        />
+        <button id="set-players-btn" class="btn">Set Players</button>
+      </div>
+
+      <!-- Player Buttons -->
+      <div id="player-buttons" class="player-buttons-column"></div>
+
+      <!-- Round Controls -->
+      <div class="controls">
+        <button id="reveal-btn" class="btn" disabled>Reveal</button>
+        <button id="board-btn" class="btn">Game Board</button>
+      </div>
+    </div>
+
+    <!-- Modal: Player View -->
+    <div id="player-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Player View</h2>
+        <p id="player-view-text" class="player-view-text"></p>
+        <button id="hide-player-view-btn" class="btn">Hide</button>
+      </div>
+    </div>
+
+    <!-- Modal: Reveal Chameleon -->
+    <div id="reveal-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-reveal-modal">&times;</span>
+        <h2>Round Result</h2>
+        <p id="reveal-text"></p>
+        <button id="close-reveal-btn" class="btn">Close</button>
+      </div>
+    </div>
+
+    <!-- Modal: Game Board -->
+    <div id="board-modal" class="modal">
+      <div class="modal-content board-modal-content">
+        <span class="close-board-modal">&times;</span>
+        <h2 id="board-category-title">Category</h2>
+        <div class="board-grid-container">
+          <table class="board-grid">
+            <thead>
+              <tr>
+                <th></th>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+                <th>D</th>
+                <th>E</th>
+              </tr>
+            </thead>
+            <tbody id="board-grid-body"></tbody>
+          </table>
+        </div>
+        <button id="new-board-btn" class="btn">New Board</button>
+      </div>
+    </div>
+
+    <script src="boards.js"></script> <!-- your board data -->
+    <script src="script.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("./sw.js")
+            .then((reg) =>
+              console.log("Service Worker registered successfully!", reg.scope)
+            )
+            .catch((err) =>
+              console.log("Service Worker registration failed:", err)
+            );
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,166 @@
+:root {
+  --primary: #4a90e2;
+  --success: #00a900;
+  --danger: #ff1900;
+  --dark: #000000;
+  --light: #ecf0f1;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--dark);
+  color: var(--dark);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.game-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+}
+
+h1 {
+  margin-top: 0;
+  color: var(--primary);
+}
+
+.setup-container {
+  margin: 15px 0;
+}
+
+#player-count-input {
+  width: 80px;
+  padding: 6px;
+  font-size: 1rem;
+  text-align: center;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+}
+
+.player-buttons-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.player-btn {
+  background: #bdc3c7;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+}
+
+.player-btn.viewed {
+  background: var(--success);
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  width: 80%;
+  max-width: 400px;
+}
+
+.board-modal-content {
+  max-width: 800px;
+}
+
+.close-modal,
+.close-reveal-modal,
+.close-board-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.player-view-text {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Board Grid */
+.board-grid-container {
+  margin: 20px 0;
+  overflow-x: auto;
+}
+
+.board-grid {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.board-grid th,
+.board-grid td {
+  border: 1px solid #a0a0a0;
+  padding: 8px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.board-grid td.word-cell {
+  font-size: 1rem;
+  background-color: #eae8e8;
+  width: 120px; /* fixed width */
+  height: 80px; /* fixed height */
+  padding: 6px;
+  box-sizing: border-box;
+}
